@@ -20,7 +20,7 @@ sub create_named_type_constraint_intersection {
   my $name = shift;
   my @type_constraint_names;
   if ( scalar @_ == 1 && _detect_type_constraint_intersection( $_[0] ) ) {
-    @type_constraint_names = _parse_type_constraint_union( $_[0] );
+    @type_constraint_names = _parse_type_constraint_intersection( $_[0] );
   }
   else {
     @type_constraint_names = @_;
