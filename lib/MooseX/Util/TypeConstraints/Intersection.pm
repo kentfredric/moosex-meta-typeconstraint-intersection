@@ -66,6 +66,7 @@ sub create_named_type_constraint_intersection {
             (?<type_atom>           $type_atom)
             (?<ws>                  $ws)
             (?<op_union>            $op_union)
+            (?<op_intersection>     $op_intersection)
             (?<type>                $type_pattern)
             (?<type_capture_parts>  $type_capture_parts_pattern)
             (?<type_with_parameter> $type_with_parameter_pattern)
@@ -127,10 +128,10 @@ sub intersection {
   }
   if ( defined $type_name ) {
     return Moose::Util::TypeConstraints::register_type_constraint(
-      create_named_type_constraint_union( $type_name, @constraints ) );
+      create_named_type_constraint_intersection( $type_name, @constraints ) );
   }
 
-  return create_type_constraint_union(@constraints);
+  return create_type_constraint_intersection(@constraints);
 
 }
 
